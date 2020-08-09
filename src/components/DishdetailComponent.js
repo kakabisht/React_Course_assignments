@@ -1,10 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardImg, CardBody, CardText, CardTitle } from 'reactstrap';
 
-class Dishdetail extends Component {
-
-    renderComments(comments) {
-        // This function is used to render comments and covert the date time format
+    function RenderComments({comments}) {
         if (comments == null) {
             return (<div></div>)
         }
@@ -25,7 +22,7 @@ class Dishdetail extends Component {
         })
         return (
             <div className='col-12 col-md-5 m-1'>
-                <h4> Comments </h4>
+            <h4> Comments </h4>
                 <ul className='list-unstyled'>
                     {cmnts}
                 </ul>
@@ -34,8 +31,7 @@ class Dishdetail extends Component {
         )
     }
 
-    renderDish(dish) {
-        // This is function is used to render dish name and dsicription
+    function RenderDish({dish}) {
         if (dish != null) {
             return (
                 <div className='col-12 col-md-5 m-1'>
@@ -53,20 +49,17 @@ class Dishdetail extends Component {
             return (<div></div>)
         }
     }
-// The main rendering function for the file
-    render() {
-        const dish = this.props.dish
+
+    const  DishDetail = (props) => {
+        const dish = props.dish
         if (dish == null) {
             return (<div></div>)
         }
-        const dishItem = this.renderDish(dish)
-        const commentItem = this.renderComments(dish.comments)
-        return (
-            <div className='row'>
-                {dishItem}
-                {commentItem}
-            </div>
+        return (            
+        <div className='row '>
+                <RenderDish dish={props.dish}/>
+                <RenderComments comments={props.dish.comments}/>
+        </div>
         )
     }
-}
-export default Dishdetail
+export default DishDetail
