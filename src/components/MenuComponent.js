@@ -13,12 +13,14 @@ class Menu extends Component {
     }
 
     onSelectedDish(dish) {
+        // For selecting the clicked dish
         this.setState({
             selectedDish: dish
         })
     }
 
     render() {
+        // Iterating through the entire dishes and storing the values in menu variable
         const menu = this.props.dishes.map(dish => {
             return (
                 <div key={dish.id} className='col-12 col-md-5 m-1'>
@@ -34,8 +36,10 @@ class Menu extends Component {
         return (
             <div className='container'>
                 <div className='row'>
+                    {/* Callling menu  variable*/}
                     {menu}
                 </div>
+                {/* Callling Dishdetail componet and passing the dish as the parameter */}
                 <Dishdetail dish={this.state.selectedDish}></Dishdetail>
             </div>
         );
