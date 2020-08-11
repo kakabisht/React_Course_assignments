@@ -9,7 +9,7 @@ class Contact extends Component {
     
     constructor(props) {
         super(props);
-
+        // Form fields
         this.state = {
             firstname: '',
             lastname: '',
@@ -25,6 +25,7 @@ class Contact extends Component {
                 email: false
             }
         }
+        // binding all the functions
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
@@ -32,28 +33,35 @@ class Contact extends Component {
     
 
     handleInputChange(event) {
+        // When an input is changed
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
     
         this.setState({
+            // to change the value
           [name]: value
         });
     }
 
     handleSubmit(event) {
+        // to submit the form 
         console.log('Current State is: ' + JSON.stringify(this.state));
         alert('Current State is: ' + JSON.stringify(this.state));
         event.preventDefault();
+        // to prevent the default option of linking to other page after clicking the button
     }
 
     handleBlur = (field) => (evt) => {
+        // checking if a field has been touched or not
         this.setState({
             touched: { ...this.state.touched, [field]: true }
+            // The use of dot dot dot, so to say, all those. So whatever is the current state to that, I am going to modify only that particular field
         });
     }
 
     validate(firstname, lastname, telnum, email) {
+        // validating all the fields of the form
         const errors = {
             firstname: '',
             lastname: '',
@@ -82,6 +90,7 @@ class Contact extends Component {
     }
     
     render(){
+        // We validate the fields before returning the form
         const errors = this.validate(this.state.firstname, this.state.lastname, this.state.telnum, this.state.email);
         return(
         

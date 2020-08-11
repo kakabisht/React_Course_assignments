@@ -1,3 +1,4 @@
+// Contains information on comments in JSON format
 export const COMMENTS = 
 [
     {

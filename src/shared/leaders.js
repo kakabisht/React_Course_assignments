@@ -1,3 +1,4 @@
+// Contains information on leaders in JSON format
 export const LEADERS = [
     {
       id: 0,

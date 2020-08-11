@@ -1,3 +1,4 @@
+// Contains information on dishes in JSON format
 export const DISHES =
     [
         {

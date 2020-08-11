@@ -3,6 +3,8 @@ import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'r
 import { Link } from 'react-router-dom';
 
 function RenderLeader({leader}){
+    // {leader} is used to directly access the leader value from the parameter sent
+    //  The function returns the leader designation and description 
     return (
        <div key={leader.id} className="col-12 mt-5">
            <Media tag="p">
@@ -21,8 +23,9 @@ function RenderLeader({leader}){
 
 
 function About(props) {
-
+    // Maping leaders to leaders using RenderLeader function
     const leaders = props.leaders.map((leader) => {
+        // Iterates over all the leaders and renders their views
         return (
             <RenderLeader leader ={leader}/>
         );
@@ -84,6 +87,7 @@ function About(props) {
                 </div>
                 <div className="col-12">
                     <Media list>
+                        {/* line 27 is called */}
                         {leaders}
                     </Media>
                 </div>

@@ -4,6 +4,7 @@ import { Card, CardImg, CardText, CardBody,
 import { Link } from 'react-router-dom';
     
     function RenderDish({dish}) {
+        // Rendering the dish name and description
         if (dish != null) {
             return (
                 <div className='col-12 col-md-5 m-1'>
@@ -23,9 +24,11 @@ import { Link } from 'react-router-dom';
     }
 
     function RenderComments({comments}) {
+        // Rendering the comments of dishes
         if (comments == null) {
             return (<div></div>)
         }
+        // Maping cmts to dishe's comments 
         const cmnts = comments.map(comment => {
             return (
                 <li key={comment.id}>
@@ -37,6 +40,7 @@ import { Link } from 'react-router-dom';
                             month: 'long',
                             day: '2-digit'
                         }).format(new Date(comment.date))}
+                    {/* Converting a date into us date format */}
                     </p>
                 </li>
             )
@@ -44,6 +48,7 @@ import { Link } from 'react-router-dom';
         return (
             <div className='col-12 col-md-5 m-1'>
             <h4> Comments </h4>
+            {/* Line 32 */}
                     {cmnts}
             </div>
         )
@@ -51,6 +56,7 @@ import { Link } from 'react-router-dom';
 
 
     const DishDetail = (props) => {
+        // Storing the Renderdish and RenderComments for a particular dish
         if (props.dish != null) {
             return (
                     <div className="container">

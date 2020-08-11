@@ -1,3 +1,4 @@
+// Contains information on promotions in JSON format
 export const PROMOTIONS = [
     {
       id: 0,
