@@ -58,6 +58,7 @@ class Main extends Component {
           <Switch>
                 <Route path='/home' component={HomePage} />
                 <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} />} />
+                {/* Pass in parameters in the above statement */}
                 <Route path='/menu/:dishId' component={DishWithId} />
                 <Route exact path='/contactus' component={Contact} />
                 <Route exact path="/aboutus" component={() => <About leaders={this.state.leaders} />} />                  
