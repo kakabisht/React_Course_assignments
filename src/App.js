@@ -10,6 +10,7 @@ class App extends Component {
 
   render() {
     return (
+      // FLux architecture implementation
     <Provider store={store}>
     <BrowserRouter>
       <div className="App">
