@@ -6,6 +6,8 @@ import { Breadcrumb, BreadcrumbItem,
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Link } from 'react-router-dom';
 
+
+// Different validations
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
@@ -76,6 +78,7 @@ class Contact extends Component {
             email: ''
         };
 
+        // Different conditions for validations
         if (this.state.touched.firstname && firstname.length < 3)
             errors.firstname = 'First Name should be >= 3 characters';
         else if (this.state.touched.firstname && firstname.length > 10)
@@ -143,18 +146,23 @@ class Contact extends Component {
             <div className="col-12">
                <h3>Send us your Feedback</h3>
             </div>
+            {/* Form for Giving feedback */}
              <div className="col-12 col-md-9">
              <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
              <Row className="form-group">
+                                {/* This should be htmlFor. Now, if you use simple for here again because this is going to be JSX. 
+                                The simple f-o-r, for, will be confused with JavaScript's for, so that's why we'll have to use label htmlFor here. */}
                                 <Label htmlFor="firstname" md={2}>First Name</Label>
                                 <Col md={10}>
                                     <Control.text model=".firstname" id="firstname" name="firstname"
                                         placeholder="First Name"
                                         className="form-control"
+                                        // Validadting all the condtions at line 9
                                         validators={{
                                             required, minLength: minLength(3), maxLength: maxLength(15)
                                         }}
                                          />
+                                         {/* For all the errors due to a particular validation */}
                                     <Errors
                                         className="text-danger"
                                         model=".firstname"

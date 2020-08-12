@@ -50,6 +50,7 @@ import { Link } from 'react-router-dom';
             <h4> Comments </h4>
             {/* Line 32 */}
                     {cmnts}
+                    {/* Calling the comment form on line 94  */}
                     <CommentForm dishId={dishId} />
             </div>
         )
@@ -86,6 +87,7 @@ import { Link } from 'react-router-dom';
     }
 export default DishDetail
 
+// Validation fopr submitting comments
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
@@ -123,6 +125,7 @@ export class CommentForm extends Component {
                     <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                         <ModalHeader toggle={this.toggleModal}> Submit comment</ModalHeader>
                         <ModalBody>
+                            {/* The form for submitting a comment */}
                             <div className="col-12 col-md-9">
                                 <LocalForm onSubmit={(values) => this.handleSubmit(values)} >
                                     <Row className="form-group">
@@ -142,7 +145,9 @@ export class CommentForm extends Component {
                                         <Label htmlFor="author" md={2}>Your name</Label>
                                         <Col md={10}>
                                             <Control.text model=".author" id="author" name="author" placeholder="Author" className="form-control" validators={{ required, minLength: minLength(3), maxLength: maxLength(15) }} />
+                                            {/* Validations are being called  */}
                                             <Errors className="text-danger" model=".author" show="touched" messages={{ required: 'Required', minLength: 'Must be greater than 3 characters', maxLength: 'Must be 15 charaters or less' }} />
+                                            {/* Paritcular errors for particular validation failure */}
                                         </Col>
                                     </Row>
 
