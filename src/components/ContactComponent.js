@@ -3,8 +3,9 @@
 import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem,
     Button, Row, Col, Label } from 'reactstrap';
-import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Control, Form, Errors, actions } from 'react-redux-form';
 import { Link } from 'react-router-dom';
+
 
 
 // Different validations
@@ -57,6 +58,7 @@ class Contact extends Component {
         // to submit the form 
         console.log('Current State is: ' + JSON.stringify(values));
         alert('Current State is: ' + JSON.stringify(values));
+        this.props.resetFeedbackForm();
         // event.preventDefault();
         // to prevent the default option of linking to other page after clicking the button
     }
@@ -68,6 +70,7 @@ class Contact extends Component {
             // The use of dot dot dot, so to say, all those. So whatever is the current state to that, I am going to modify only that particular field
         });
     }
+
 
     validate(firstname, lastname, telnum, email) {
         // validating all the fields of the form
@@ -148,8 +151,8 @@ class Contact extends Component {
             </div>
             {/* Form for Giving feedback */}
              <div className="col-12 col-md-9">
-             <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
-             <Row className="form-group">
+             <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}>             
+                <Row className="form-group">
                                 {/* This should be htmlFor. Now, if you use simple for here again because this is going to be JSX. 
                                 The simple f-o-r, for, will be confused with JavaScript's for, so that's why we'll have to use label htmlFor here. */}
                                 <Label htmlFor="firstname" md={2}>First Name</Label>
@@ -275,7 +278,7 @@ class Contact extends Component {
                                     </Button>
                                 </Col>
                             </Row>
-                    </LocalForm>
+                    </Form>
              </div>
         </div>
         </div>
