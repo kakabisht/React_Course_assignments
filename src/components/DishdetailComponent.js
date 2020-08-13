@@ -23,7 +23,7 @@ import { Link } from 'react-router-dom';
         }
     }
 
-    function RenderComments({comments, dishId}) {
+    function RenderComments({comments, addComment, dishId}) {
         // Rendering the comments of dishes
         if (comments == null) {
             return (<div></div>)
@@ -51,7 +51,7 @@ import { Link } from 'react-router-dom';
             {/* Line 32 */}
                     {cmnts}
                     {/* Calling the comment form on line 94  */}
-                    <CommentForm dishId={dishId} />
+                    <CommentForm dishId={dishId} addComment={addComment} />
             </div>
         )
     }
@@ -74,9 +74,10 @@ import { Link } from 'react-router-dom';
                     </div>
                     <div className="row">
                             <RenderDish dish={props.dish} />
-                            <RenderComments comments={props.comments} dishId={props.dish.id} />
+                            <RenderComments comments={props.comments} addComment={props.addComment} dishId={props.dish.id} />                    
+                            
                     </div>
-                    </div>
+                </div>
                 );
                 
         } else {
@@ -110,8 +111,7 @@ export class CommentForm extends Component {
 
     handleSubmit(values) {
         this.toggleModal();
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
     render() {
