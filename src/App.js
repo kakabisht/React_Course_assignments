@@ -12,6 +12,7 @@ class App extends Component {
     return (
       // FLux architecture implementation
     <Provider store={store}>
+      {/*  provider component allows me to configure my React application so that the Redux Store becomes available to all components in my application. */}
     <BrowserRouter>
       <div className="App">
         <Main />

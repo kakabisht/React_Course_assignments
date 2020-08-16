@@ -43,6 +43,9 @@ class Contact extends Component {
     
 
     handleInputChange(event) {
+        // We'll say handleInputChange, which will receive the event as a parameter
+        //  So whenever this input is changed, any change is made to the input, 
+        // then this will result in a call to the handleInputChange,
         // When an input is changed
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -55,6 +58,7 @@ class Contact extends Component {
     }
 
     handleSubmit(values) {
+        // Then we'll see handleSubmit which also receives the event as a parameter
         // to submit the form 
         this.props.postFeedback(values);        
         alert('Feedback is: ' + JSON.stringify(values));
